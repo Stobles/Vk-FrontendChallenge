@@ -44,7 +44,9 @@ export const HomePage = () => {
           ) : null}
         </>
       ) : (
-        <div>Ничего не найдено</div>
+        <div className={styles.NotFound}>
+          Мы не смогли загрузить изображения.
+        </div>
       )}
     </div>
   );
