@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/Sidebar/Sidebar";
 
 import { IoMenuSharp } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
+import { useMediaQuery } from "react-responsive";
 
 const Navigation = ({ links }: { links: NavigationLink[] }) => {
   return (
@@ -29,29 +30,33 @@ const Navigation = ({ links }: { links: NavigationLink[] }) => {
 };
 
 export const Header = () => {
+  const isTablet = useMediaQuery({ query: "(max-width: 992px)" });
   return (
     <header className={styles.Header}>
-      <Navigation links={navLinks} />
-      <Sidebar>
-        <Sidebar.Trigger className={styles.Trigger}>
-          <IoMenuSharp />
-        </Sidebar.Trigger>
-        <Sidebar.Root>
-          <Sidebar.Header>
-            <h2>Cat Pinterest</h2>
-            <Sidebar.Trigger className={styles.Trigger}>
-              <RxCross1 />
-            </Sidebar.Trigger>
-          </Sidebar.Header>
-          <Sidebar.Content>
-            {navLinks.map((route) => (
-              <Sidebar.Item key={route.name} to={route.to}>
-                {route.name}
-              </Sidebar.Item>
-            ))}
-          </Sidebar.Content>
-        </Sidebar.Root>
-      </Sidebar>
+      {isTablet ? (
+        <Sidebar>
+          <Sidebar.Trigger className={styles.Trigger}>
+            <IoMenuSharp />
+          </Sidebar.Trigger>
+          <Sidebar.Root>
+            <Sidebar.Header>
+              <h2>Cat Pinterest</h2>
+              <Sidebar.Trigger className={styles.Trigger}>
+                <RxCross1 />
+              </Sidebar.Trigger>
+            </Sidebar.Header>
+            <Sidebar.Content>
+              {navLinks.map((route) => (
+                <Sidebar.Item key={route.name} to={route.to}>
+                  {route.name}
+                </Sidebar.Item>
+              ))}
+            </Sidebar.Content>
+          </Sidebar.Root>
+        </Sidebar>
+      ) : (
+        <Navigation links={navLinks} />
+      )}
     </header>
   );
 };
