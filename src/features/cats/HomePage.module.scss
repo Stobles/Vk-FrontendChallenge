@@ -1,0 +1,28 @@
+@import "@/app/variables.scss";
+
+.Wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Footer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px;
+}
+
+.Button {
+  color: $white-color;
+  background-color: $primary-color;
+
+  padding: 10px 20px;
+
+  border: 0;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
