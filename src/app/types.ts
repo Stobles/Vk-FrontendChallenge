@@ -10,3 +10,8 @@ export type QueryParams = {
   page: number;
   order?: "ASC" | "DESC" | "RAND ";
 };
+
+export type NavigationLink = {
+  name: string;
+  to: string;
+};
