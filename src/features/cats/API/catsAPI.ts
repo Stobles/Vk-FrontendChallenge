@@ -44,6 +44,7 @@ export const catApi = createApi({
       merge: (currentCache, newItems) => {
         currentCache.push(...newItems);
       },
+      // Refetch when the page arg changes
       forceRefetch({ currentArg, previousArg }) {
         return currentArg !== previousArg;
       },

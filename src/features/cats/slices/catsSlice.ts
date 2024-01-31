@@ -11,15 +11,13 @@ const initialState: CatState = {
 };
 
 export const FavoriteCatsSlice = createSlice({
-  name: "favorite_cats_slice",
+  name: "favorites_cats_slice",
   initialState,
   reducers: {
     toggleFavorite(state, action: PayloadAction<Cat>) {
       const isFavorite = state.favorites.find(
         (cat) => cat.id === action.payload.id
       );
-
-      console.log(isFavorite);
 
       if (isFavorite) {
         state.favorites = state.favorites.filter(

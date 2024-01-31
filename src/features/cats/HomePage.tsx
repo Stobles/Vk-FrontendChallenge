@@ -25,7 +25,7 @@ export const HomePage = () => {
 
     document.addEventListener("scroll", onScroll);
 
-    return function () {
+    return () => {
       document.removeEventListener("scroll", onScroll);
     };
   }, [page, isFetching]);
