@@ -1,6 +1,7 @@
 import { Cat } from "@/app/types";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "sonner";
 
 export type CatState = {
   favorites: Cat[];
@@ -23,8 +24,10 @@ export const FavoriteCatsSlice = createSlice({
         state.favorites = state.favorites.filter(
           (cat) => cat.id !== action.payload.id
         );
+        toast.error("Котик был удален из избранного");
       } else {
         state.favorites.push(action.payload);
+        toast.success("Котик был добавлен в избранное");
       }
     },
   },
