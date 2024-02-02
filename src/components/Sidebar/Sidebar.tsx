@@ -22,11 +22,18 @@ export const Sidebar = ({ children }: { children: React.ReactNode }) => {
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
   };
 
   useEffect(() => {
     setIsOpen(false);
+    document.body.style.overflow = "unset";
   }, [pathname]);
+
   return (
     <SidebarContext.Provider value={{ isOpen, toggleSidebar }}>
       {children}
