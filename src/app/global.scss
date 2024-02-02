@@ -1,3 +1,4 @@
+@import "@/app/variables.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 /* Указываем box sizing */
@@ -93,6 +94,8 @@ body {
 
 main {
   flex: 1;
+
+  margin-top: ($header-height + px);
 }
 
 .wrapper {
