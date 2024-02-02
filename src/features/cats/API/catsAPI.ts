@@ -41,8 +41,13 @@ export const catApi = createApi({
       serializeQueryArgs: ({ endpointName }) => {
         return endpointName;
       },
-      merge: (currentCache, newItems) => {
-        currentCache.push(...newItems);
+      // Always merge incoming data to the cache entry
+      merge: (currentCache, newItems, { arg }) => {
+        if (arg.page === 0) {
+          return newItems;
+        } else {
+          currentCache.push(...newItems);
+        }
       },
       // Refetch when the page arg changes
       forceRefetch({ currentArg, previousArg }) {

@@ -1,34 +1,12 @@
-import { useEffect, useState } from "react";
-import { useGetCatsQuery } from ".";
 import { CatsList } from "./ui/CatsList/CatsList";
 import { PageSpinner } from "@/components/UI/Loader";
 
 import styles from "./HomePage.module.scss";
 import { Spinner } from "@/components/UI/Spinner";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 export const HomePage = () => {
-  const [page, setPage] = useState(0);
-  const { data, isLoading, isFetching } = useGetCatsQuery({
-    limit: 20,
-    page,
-    order: "ASC",
-  });
-
-  useEffect(() => {
-    const onScroll = () => {
-      const scrolledToBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
-      if (scrolledToBottom && !isFetching) {
-        setPage(page + 1);
-      }
-    };
-
-    document.addEventListener("scroll", onScroll);
-
-    return () => {
-      document.removeEventListener("scroll", onScroll);
-    };
-  }, [page, isFetching]);
+  const { data, isLoading, isFetching } = useInfiniteScroll();
 
   if (isLoading) return <PageSpinner />;
 

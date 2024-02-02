@@ -6,8 +6,8 @@ export type Cat = {
 };
 
 export type QueryParams = {
-  limit: number;
-  page: number;
+  limit?: number;
+  page?: number;
   order?: "ASC" | "DESC" | "RAND ";
 };
 
